@@ -15,7 +15,7 @@ msg.agregarContenido("<p><img src=\"http://www.gsampallo.com/blog/wp-content/upl
 
 mMail = EnvMail()
 
-mMail.destinatarios.append("mired1225@gmail.com")
+mMail.destinatarios.append("isaacavelino14@gmail.com")
 #mMail.destinatarios.append("")
 
 

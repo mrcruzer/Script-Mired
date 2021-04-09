@@ -3,6 +3,7 @@ import mysql.connector
 from mysql.connector import errorcode
 from Movimiento import Movimientos
 from MovExcel import MovimientoExcel
+import win32com.client as win32
 
 config ={
          'host':'localhost',
@@ -26,7 +27,7 @@ try:
                     reportsab.MONTO  \
                     FROM \
                     reportsab \
-                WHERE WEEK(reportsab.FECHA) = (WEEKOFYEAR(curdate()``)) \
+                WHERE WEEK(reportsab.FECHA) = (WEEKOFYEAR(curdate() - 1)) \
                 ORDER BY reportsab.CUC,reportsab.FECHA" 
 
 
@@ -39,7 +40,12 @@ try:
 
         m2e.agregarItem(reportsab)
 
-        m2e.guardarPlantilla("ejemplo.xls")
+        m2e.guardarPlantilla("ejemplo1.xls")
+        
+        
+excel = win32.dispatchEX('Excel.Application')
+excel.DisplayAlerts = False
+excel.Visible = True
 
 except mysql.connector.Error as err:
             if err.errno ==errorcode.ER_ACCESS_DENIED_ERROR:
